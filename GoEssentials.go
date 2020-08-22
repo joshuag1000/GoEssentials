@@ -33,7 +33,7 @@ func Hello() {
 }
 
 // GetServerIp Gets the IP address of the device. If the device has more than one IP it will select the first IP.
-func GetServerIp(ipNum int) string {
+func GetServerIP(ipNum int) string {
 	addrs, err := net.InterfaceAddrs()
 	if err != nil {
 		os.Stderr.WriteString("Oops: " + err.Error() + "\n")
