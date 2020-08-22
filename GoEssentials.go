@@ -7,7 +7,7 @@ import (
 	"runtime"
 )
 
-func openbrowser(url string) {
+func OpenBrowser(url string) {
 	var err error
 	switch runtime.GOOS {
 	case "linux":
@@ -22,4 +22,8 @@ func openbrowser(url string) {
 	if err != nil {
 		log.Fatal(err)
 	}
+}
+
+func Hello() {
+	fmt.Println("Hi")
 }
