@@ -9,6 +9,7 @@ import (
 	"runtime"
 )
 
+// OpenBrowser When given a URL it will open a Web browser to it
 func OpenBrowser(url string) {
 	var err error
 	switch runtime.GOOS {
@@ -26,10 +27,12 @@ func OpenBrowser(url string) {
 	}
 }
 
+// Hello Prints hi into the golang window
 func Hello() {
 	fmt.Println("Hi")
 }
 
+// GetServerIp Gets the IP address of the device. If the device has more than one IP it will select the first IP.
 func GetServerIp(ipNum int) string {
 	addrs, err := net.InterfaceAddrs()
 	if err != nil {
