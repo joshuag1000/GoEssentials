@@ -9,6 +9,8 @@ import (
 	"runtime"
 )
 
+// General Subroutines for all my programs.
+
 // OpenBrowser When given a URL it will open a Web browser to it
 func OpenBrowser(url string) {
 	var err error
