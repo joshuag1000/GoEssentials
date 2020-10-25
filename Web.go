@@ -5,9 +5,12 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"os/exec"
 	"path/filepath"
+	"runtime"
 )
 
+//Starts http and https Web server
 func StartWebServer(NonHttpsPort string, SitePort string) {
 	ExecPath, err2 := filepath.Abs(filepath.Dir(os.Args[0]))
 	if err2 != nil {
@@ -32,5 +35,23 @@ func StartWebServer(NonHttpsPort string, SitePort string) {
 	err_http := http.ListenAndServe(":"+NonHttpsPort, nil)
 	if err_http != nil {
 		log.Fatal("Web server (HTTP): ", err_http)
+	}
+}
+
+// OpenBrowser When given a URL it will open a Web browser to it
+func OpenBrowser(url string) {
+	var err error
+	switch runtime.GOOS {
+	case "linux":
+		err = exec.Command("xdg-open", url).Start()
+	case "windows":
+		err = exec.Command("rundll32", "url.dll,FileProtocolHandler", url).Start()
+	case "darwin":
+		err = exec.Command("open", url).Start()
+	default:
+		err = fmt.Errorf("unsupported platform")
+	}
+	if err != nil {
+		log.Fatal(err)
 	}
 }

@@ -2,32 +2,11 @@ package goessentials
 
 import (
 	"fmt"
-	"log"
 	"net"
 	"os"
-	"os/exec"
-	"runtime"
 )
 
 // General Subroutines for all my programs.
-
-// OpenBrowser When given a URL it will open a Web browser to it
-func OpenBrowser(url string) {
-	var err error
-	switch runtime.GOOS {
-	case "linux":
-		err = exec.Command("xdg-open", url).Start()
-	case "windows":
-		err = exec.Command("rundll32", "url.dll,FileProtocolHandler", url).Start()
-	case "darwin":
-		err = exec.Command("open", url).Start()
-	default:
-		err = fmt.Errorf("unsupported platform")
-	}
-	if err != nil {
-		log.Fatal(err)
-	}
-}
 
 // Hello Prints hi into the golang window
 func Hello() {
