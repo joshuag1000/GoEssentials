@@ -57,7 +57,8 @@ func OpenBrowser(url string) {
 	}
 }
 
-// GetServerIp Gets the IP address of the device. If the device has more than one IP it will select the first IP.
+// GetServerIp Gets the IP address of the device.
+// If the device has more than one IP it will select the first IP.
 func GetServerIP(ipNum int) string {
 	addrs, err := net.InterfaceAddrs()
 	if err != nil {
